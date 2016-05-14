@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.jsp" PATH="/index.jsp"
+  SHAPE="112,216,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.jsp:0" NAME="item" PATH="/index.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="menu::#paginas#menu.jsp" NAME="output"
+    PATH="/paginas/menu.jsp" TARGET="rules:#paginas#menu.jsp"
+    TITLE="menu" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#menu.jsp" PATH="/paginas/menu.jsp"
+  SHAPE="256,224,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#menu.jsp:0" NAME="item"
+   PATH="/paginas/menu.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="presentacion::#paginas#presentacion.jsp"
+    NAME="output" PATH="/paginas/presentacion.jsp"
+    TARGET="rules:#paginas#presentacion.jsp" TITLE="presentacion" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#presentacion.jsp"
+  PATH="/paginas/presentacion.jsp" SHAPE="416,224,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#presentacion.jsp:0" NAME="item"
+   PATH="/paginas/presentacion.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="menu::#paginas#menu.jsp" NAME="output"
+    PATH="/paginas/menu.jsp" TARGET="rules:#paginas#menu.jsp"
+    TITLE="menu" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

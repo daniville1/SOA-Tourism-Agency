@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://facade/xsd" xmlns:xsd="http://facade" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://facade">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://facade/xsd">
+            <xs:complexType name="FacadeVuelo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="instancia" nillable="true" type="ax23:FacadeVuelo"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax24="http://facade/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://facade">
+            <xs:import namespace="http://facade/xsd"/>
+            <xs:element name="cancelarReservacion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="nroVuelo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="nroDocPasajero" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="cancelarReservacionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reservarAsiento">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="nroVuelo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="nroDocPasajero" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pasajero" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reservarAsientoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getNroAsientosDisponibles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="nroVuelo" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getNroAsientosDisponiblesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getNroVuelo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ciudadOrigen" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ciudadDestino" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getNroVueloResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInstanciaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax24:FacadeVuelo"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="cancelarReservacionRequest">
+        <wsdl:part name="parameters" element="xsd:cancelarReservacion"/>
+    </wsdl:message>
+    <wsdl:message name="cancelarReservacionResponse">
+        <wsdl:part name="parameters" element="xsd:cancelarReservacionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNroVueloRequest">
+        <wsdl:part name="parameters" element="xsd:getNroVuelo"/>
+    </wsdl:message>
+    <wsdl:message name="getNroVueloResponse">
+        <wsdl:part name="parameters" element="xsd:getNroVueloResponse"/>
+    </wsdl:message>
+    <wsdl:message name="reservarAsientoRequest">
+        <wsdl:part name="parameters" element="xsd:reservarAsiento"/>
+    </wsdl:message>
+    <wsdl:message name="reservarAsientoResponse">
+        <wsdl:part name="parameters" element="xsd:reservarAsientoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getInstanciaRequest"/>
+    <wsdl:message name="getInstanciaResponse">
+        <wsdl:part name="parameters" element="xsd:getInstanciaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNroAsientosDisponiblesRequest">
+        <wsdl:part name="parameters" element="xsd:getNroAsientosDisponibles"/>
+    </wsdl:message>
+    <wsdl:message name="getNroAsientosDisponiblesResponse">
+        <wsdl:part name="parameters" element="xsd:getNroAsientosDisponiblesResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="WebServiceVueloPortType">
+        <wsdl:operation name="cancelarReservacion">
+            <wsdl:input message="xsd:cancelarReservacionRequest" wsaw:Action="urn:cancelarReservacion"/>
+            <wsdl:output message="xsd:cancelarReservacionResponse" wsaw:Action="urn:cancelarReservacionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNroVuelo">
+            <wsdl:input message="xsd:getNroVueloRequest" wsaw:Action="urn:getNroVuelo"/>
+            <wsdl:output message="xsd:getNroVueloResponse" wsaw:Action="urn:getNroVueloResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="reservarAsiento">
+            <wsdl:input message="xsd:reservarAsientoRequest" wsaw:Action="urn:reservarAsiento"/>
+            <wsdl:output message="xsd:reservarAsientoResponse" wsaw:Action="urn:reservarAsientoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <wsdl:input message="xsd:getInstanciaRequest" wsaw:Action="urn:getInstancia"/>
+            <wsdl:output message="xsd:getInstanciaResponse" wsaw:Action="urn:getInstanciaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNroAsientosDisponibles">
+            <wsdl:input message="xsd:getNroAsientosDisponiblesRequest" wsaw:Action="urn:getNroAsientosDisponibles"/>
+            <wsdl:output message="xsd:getNroAsientosDisponiblesResponse" wsaw:Action="urn:getNroAsientosDisponiblesResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WebServiceVueloSoap11Binding" type="xsd:WebServiceVueloPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="cancelarReservacion">
+            <soap:operation soapAction="urn:cancelarReservacion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNroVuelo">
+            <soap:operation soapAction="urn:getNroVuelo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reservarAsiento">
+            <soap:operation soapAction="urn:reservarAsiento" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <soap:operation soapAction="urn:getInstancia" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNroAsientosDisponibles">
+            <soap:operation soapAction="urn:getNroAsientosDisponibles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebServiceVueloSoap12Binding" type="xsd:WebServiceVueloPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="cancelarReservacion">
+            <soap12:operation soapAction="urn:cancelarReservacion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNroVuelo">
+            <soap12:operation soapAction="urn:getNroVuelo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reservarAsiento">
+            <soap12:operation soapAction="urn:reservarAsiento" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <soap12:operation soapAction="urn:getInstancia" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNroAsientosDisponibles">
+            <soap12:operation soapAction="urn:getNroAsientosDisponibles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebServiceVueloHttpBinding" type="xsd:WebServiceVueloPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="cancelarReservacion">
+            <http:operation location="WebServiceVuelo/cancelarReservacion"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="cancelarReservacion"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="cancelarReservacion"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNroVuelo">
+            <http:operation location="WebServiceVuelo/getNroVuelo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getNroVuelo"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getNroVuelo"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reservarAsiento">
+            <http:operation location="WebServiceVuelo/reservarAsiento"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="reservarAsiento"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="reservarAsiento"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <http:operation location="WebServiceVuelo/getInstancia"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getInstancia"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getInstancia"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNroAsientosDisponibles">
+            <http:operation location="WebServiceVuelo/getNroAsientosDisponibles"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getNroAsientosDisponibles"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getNroAsientosDisponibles"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WebServiceVuelo">
+        <wsdl:port name="WebServiceVueloHttpSoap11Endpoint" binding="xsd:WebServiceVueloSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/WebServiceVuelo"/>
+        </wsdl:port>
+        <wsdl:port name="WebServiceVueloHttpSoap12Endpoint" binding="xsd:WebServiceVueloSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/WebServiceVuelo"/>
+        </wsdl:port>
+        <wsdl:port name="WebServiceVueloHttpEndpoint" binding="xsd:WebServiceVueloHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/WebServiceVuelo"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

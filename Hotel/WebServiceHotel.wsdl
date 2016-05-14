@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://facade" xmlns:ax21="http://facade/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://facade">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://facade/xsd">
+            <xs:complexType name="FacadeHotel">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="instancia" nillable="true" type="ax21:FacadeHotel"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://facade/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://facade">
+            <xs:import namespace="http://facade/xsd"/>
+            <xs:element name="cancelarReservacion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="hotel" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="nro_documento_pasajero" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="cancelarReservacionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reservarHabitacion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="hotel" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="nro_documento_pasajero" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pasajero" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reservarHabitacionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCtdHabDisponibles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="hotel" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCtdHabDisponiblesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getHotelesConHabDisponibles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ciudad" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getHotelesConHabDisponiblesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInstanciaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:FacadeHotel"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="reservarHabitacionRequest">
+        <wsdl:part name="parameters" element="xsd:reservarHabitacion"/>
+    </wsdl:message>
+    <wsdl:message name="reservarHabitacionResponse">
+        <wsdl:part name="parameters" element="xsd:reservarHabitacionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getCtdHabDisponiblesRequest">
+        <wsdl:part name="parameters" element="xsd:getCtdHabDisponibles"/>
+    </wsdl:message>
+    <wsdl:message name="getCtdHabDisponiblesResponse">
+        <wsdl:part name="parameters" element="xsd:getCtdHabDisponiblesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="cancelarReservacionRequest">
+        <wsdl:part name="parameters" element="xsd:cancelarReservacion"/>
+    </wsdl:message>
+    <wsdl:message name="cancelarReservacionResponse">
+        <wsdl:part name="parameters" element="xsd:cancelarReservacionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getHotelesConHabDisponiblesRequest">
+        <wsdl:part name="parameters" element="xsd:getHotelesConHabDisponibles"/>
+    </wsdl:message>
+    <wsdl:message name="getHotelesConHabDisponiblesResponse">
+        <wsdl:part name="parameters" element="xsd:getHotelesConHabDisponiblesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getInstanciaRequest"/>
+    <wsdl:message name="getInstanciaResponse">
+        <wsdl:part name="parameters" element="xsd:getInstanciaResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="WebServiceHotelPortType">
+        <wsdl:operation name="reservarHabitacion">
+            <wsdl:input message="xsd:reservarHabitacionRequest" wsaw:Action="urn:reservarHabitacion"/>
+            <wsdl:output message="xsd:reservarHabitacionResponse" wsaw:Action="urn:reservarHabitacionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCtdHabDisponibles">
+            <wsdl:input message="xsd:getCtdHabDisponiblesRequest" wsaw:Action="urn:getCtdHabDisponibles"/>
+            <wsdl:output message="xsd:getCtdHabDisponiblesResponse" wsaw:Action="urn:getCtdHabDisponiblesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="cancelarReservacion">
+            <wsdl:input message="xsd:cancelarReservacionRequest" wsaw:Action="urn:cancelarReservacion"/>
+            <wsdl:output message="xsd:cancelarReservacionResponse" wsaw:Action="urn:cancelarReservacionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getHotelesConHabDisponibles">
+            <wsdl:input message="xsd:getHotelesConHabDisponiblesRequest" wsaw:Action="urn:getHotelesConHabDisponibles"/>
+            <wsdl:output message="xsd:getHotelesConHabDisponiblesResponse" wsaw:Action="urn:getHotelesConHabDisponiblesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <wsdl:input message="xsd:getInstanciaRequest" wsaw:Action="urn:getInstancia"/>
+            <wsdl:output message="xsd:getInstanciaResponse" wsaw:Action="urn:getInstanciaResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WebServiceHotelSoap11Binding" type="xsd:WebServiceHotelPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getCtdHabDisponibles">
+            <soap:operation soapAction="urn:getCtdHabDisponibles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reservarHabitacion">
+            <soap:operation soapAction="urn:reservarHabitacion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="cancelarReservacion">
+            <soap:operation soapAction="urn:cancelarReservacion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHotelesConHabDisponibles">
+            <soap:operation soapAction="urn:getHotelesConHabDisponibles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <soap:operation soapAction="urn:getInstancia" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebServiceHotelSoap12Binding" type="xsd:WebServiceHotelPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getCtdHabDisponibles">
+            <soap12:operation soapAction="urn:getCtdHabDisponibles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reservarHabitacion">
+            <soap12:operation soapAction="urn:reservarHabitacion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="cancelarReservacion">
+            <soap12:operation soapAction="urn:cancelarReservacion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHotelesConHabDisponibles">
+            <soap12:operation soapAction="urn:getHotelesConHabDisponibles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <soap12:operation soapAction="urn:getInstancia" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebServiceHotelHttpBinding" type="xsd:WebServiceHotelPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getCtdHabDisponibles">
+            <http:operation location="WebServiceHotel/getCtdHabDisponibles"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getCtdHabDisponibles"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getCtdHabDisponibles"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reservarHabitacion">
+            <http:operation location="WebServiceHotel/reservarHabitacion"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="reservarHabitacion"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="reservarHabitacion"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="cancelarReservacion">
+            <http:operation location="WebServiceHotel/cancelarReservacion"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="cancelarReservacion"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="cancelarReservacion"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHotelesConHabDisponibles">
+            <http:operation location="WebServiceHotel/getHotelesConHabDisponibles"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getHotelesConHabDisponibles"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getHotelesConHabDisponibles"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstancia">
+            <http:operation location="WebServiceHotel/getInstancia"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getInstancia"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getInstancia"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WebServiceHotel">
+        <wsdl:port name="WebServiceHotelHttpSoap11Endpoint" binding="xsd:WebServiceHotelSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/WebServiceHotel"/>
+        </wsdl:port>
+        <wsdl:port name="WebServiceHotelHttpSoap12Endpoint" binding="xsd:WebServiceHotelSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/WebServiceHotel"/>
+        </wsdl:port>
+        <wsdl:port name="WebServiceHotelHttpEndpoint" binding="xsd:WebServiceHotelHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/WebServiceHotel"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+ <managed-bean>
+  <managed-bean-name>beanP</managed-bean-name>
+  <managed-bean-class>presentacion.BeanPresentacion</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>pagina</property-name>
+   <property-class>java.lang.String</property-class>
+   <value>presentacion.jsp</value>
+  </managed-property>
+ </managed-bean>
+ <navigation-rule>
+  <from-view-id>/index.jsp</from-view-id>
+  <navigation-case>
+   <from-outcome>menu</from-outcome>
+   <to-view-id>/paginas/menu.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/menu.jsp</from-view-id>
+  <navigation-case>
+   <from-outcome>presentacion</from-outcome>
+   <to-view-id>/paginas/presentacion.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/presentacion.jsp</from-view-id>
+  <navigation-case>
+   <from-outcome>menu</from-outcome>
+   <to-view-id>/paginas/menu.jsp</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+</faces-config>
